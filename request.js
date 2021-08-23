@@ -6,6 +6,7 @@ http.createServer( (request, response) => {
     response.end();
 }).listen(80); // xx번 포트 사용
 
+// express 사용하지 않고 서버 만들기
 
 /*
 1xx = 조건부응답
