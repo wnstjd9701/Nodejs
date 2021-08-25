@@ -4,6 +4,7 @@
 const express = require('express');
 const nunjucks = require('nunjucks');
 const logger = require('morgan');
+const bodyParser = require('body-parser'); // express 내장 모듈 - 이제 사용하지 않음
 
 // Router 
 const admin = require('./routes/admin');
@@ -19,6 +20,21 @@ nunjucks.configure('template', { // 폴더 지정
 
 // 미들웨어 셋팅
 app.use(logger('dev'));
+app.use(express.urlencoded({extended : false}) );
+app.use(express.json());
+
+app.use('/uploads', express.static('uploads') ); // 앞 : url, 뒤 : 폴더명
+
+app.use( (req, res, next) =>{
+    app.locals.isLogin = true;
+    next();
+});
+
+// app.use( (req, res, next) => {
+//     req.body = {
+        
+//     }
+// });
 
 // url 을 추가하려면 routing 필요!!
 app.get('/', (req, res) =>{

@@ -1,2 +1,11 @@
 GET /admin
 GET /admin/products
+
+
+REST API
+
+GET /users => 사용자 정보 조회
+POST /users => 사용자 등록
+GET /user/:id => 한명 조회
+PUT /user/:id => 한명 수정
+DELETE /user/:id => 삭제
