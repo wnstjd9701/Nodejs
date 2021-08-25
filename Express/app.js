@@ -1,6 +1,6 @@
 // npm install express
 // package.json - script -> start : npm start = nodemon app.js
-// 
+// npm run xxx
 const express = require('express');
 
 const app = express();
