@@ -26,7 +26,8 @@ app.use(express.json());
 app.use('/uploads', express.static('uploads') ); // 앞 : url, 뒤 : 폴더명
 
 app.use( (req, res, next) =>{
-    app.locals.isLogin = true;
+    app.locals.isLogin = false;
+    app.locals.req_path = req.path; // current url
     next();
 });
 
