@@ -2,9 +2,9 @@
   "name": "Express",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "npx nodemon -e js,html app.js"
+    "start": "npx nodemon -e js,html server.js"
   },
   "keywords": [],
   "author": "",
