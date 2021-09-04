@@ -4,7 +4,7 @@ http.createServer( (request, response) => {
     response.writeHead(200, {'Content-Type' : 'text/plain'});
     response.write('Hello Server');
     response.end();
-}).listen(80); // xx번 포트 사용
+}).listen(3000); // xx번 포트 사용
 
 // express 사용하지 않고 서버 만들기
 
