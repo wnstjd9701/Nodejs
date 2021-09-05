@@ -1,8 +1,15 @@
 'use strict'
-const arr = [1,2,3]
-const newArr = []
-arr.forEach(item => {
-    newArr.push(item)
-})
+const test = new Set()
 
-console.log(newArr);
+test.add(1)
+test.add(1)
+test.add(2)
+test.add(2)
+test.add(3)
+
+for(const item of test){
+    console.log(item)
+}
+
+const ret = test.has(2) // 2가 존재 하는가?
+console.log(ret)
