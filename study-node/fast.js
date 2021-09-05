@@ -1,7 +1,7 @@
-'use strict'
+// IIFE
+var r = (function (){
+    var lang = 'js';
+    return lang
+})();
 
-const string = `node.js` // type : string
-const arr = [] // type : object
-const obj = {} // type : object
-const num = 1 // type : number
-console.log(typeof arr)
+console.log(r)
