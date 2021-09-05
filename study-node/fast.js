@@ -1,7 +1,3 @@
-// IIFE
-var r = (function (){
-    var lang = 'js';
-    return lang
-})();
-
-console.log(r)
+setInterval( () => {
+    console.log('Hi')
+}, 1000)
