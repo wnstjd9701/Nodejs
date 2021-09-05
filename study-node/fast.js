@@ -1,6 +1,10 @@
 'use strict'
 
-const arr = [1,2,0,-1,-2]
+const details = `자세한 내용`
+let str = 'node.js'
+str += `올인원 패키지${details}`
+const int = 1
+str += `${str}의 값은 ${int}`
+console.log(str)
 
-const res  = arr.some(key => key < 0) // 0보다 작은 수가 1개라도 있으면
-console.log(res)
+console.log`details`
