@@ -1,15 +1,6 @@
 'use strict'
-const test = new Set()
 
-test.add(1)
-test.add(1)
-test.add(2)
-test.add(2)
-test.add(3)
+const arr = [1,2,0,-1,-2]
 
-for(const item of test){
-    console.log(item)
-}
-
-const ret = test.has(2) // 2가 존재 하는가?
-console.log(ret)
+const res  = arr.some(key => key < 0) // 0보다 작은 수가 1개라도 있으면
+console.log(res)
