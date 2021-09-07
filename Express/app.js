@@ -88,4 +88,4 @@ class App {
 
 }
 
-module.exports = new App().app;
+module.exports = new App().app; // app 객체 생성
