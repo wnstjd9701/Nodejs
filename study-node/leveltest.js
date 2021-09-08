@@ -6,7 +6,7 @@ const obj = {
 
 console.log(obj.title);
 
-const isEmptyObj = () => obj.title ? true : false
+const isEmptyObj = () => obj.title ? true : false // true or false return
 
 function test(){
     if(obj.title){
