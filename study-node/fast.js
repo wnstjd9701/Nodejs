@@ -17,3 +17,4 @@ console.log(getTenpercentOff(10000))
 console.log(getTenpercentOff(10000))
 console.log(getTenpercentOff(10000))
 console.log(getTenpercentOff(10000))
+// 합성함수 
