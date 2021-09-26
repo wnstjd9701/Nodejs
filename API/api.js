@@ -21,7 +21,7 @@ app.get('/api/users/:apikey/:type', async (req, res) => {
        type
     } = req.params;
 
-    if(!uuidAPIKey.check(apikey, key.uuid)){ // 발급받은 apikey가 틀릴 경우
+    if(!uuidAPIKey.isAPIKey(apikey) || !uuidAPIKey.check(apikey, key.uuid)){ // 발급받은 apikey가 틀릴 경우
         res.send('apikey is not valid');
     }
     else{ // apikey가 맞을경우
@@ -30,7 +30,7 @@ app.get('/api/users/:apikey/:type', async (req, res) => {
         let data = [
             { name: "박지성", city: "seoul"},
             { name: "손흥민", city: "seoul"}
-        ];
+        ]; // DB에서 다루는 데이터 --> Query 
         res.send(data);
    }else if(type == 'jeju'){
         res.send('jeju');
