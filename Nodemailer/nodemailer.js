@@ -1,23 +1,17 @@
-// const express = require('express');
-// const app = express();
-
-// app.listen(3000, () =>{
-//     console.log('server');
-// });
-
 const nodemailer = require('nodemailer');
 
-var transport = nodemailer.createTransport({
+const email = {
     host: "smtp.mailtrap.io",
     port: 2525,
+    secure: false,
     auth: {
       user: "10a9abd32d6be1",
       pass: "808dc7e4c8841f"
     }
-  });
+};
 
-const send = async (option) => {
-    nodemailer.createTransport(transport).sendMail(option, (error, info) => {
+const send = async (data) => {
+    nodemailer.createTransport(email).sendMail(data, (error, info) => {
         if(error) {
             console.log(error);
         }else{
