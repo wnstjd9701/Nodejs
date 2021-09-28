@@ -55,7 +55,11 @@ server.put('/api/user/:id', (req, res) => {
         res.status(404).json({ errorMessage: 'User was not found' });
     }
     else {
-        users[foundIndex] = { ...users[foundIndex], ...req.body };
+        // console.log(users[foundIndex]);
+        // console.log(req.body);
+        users[foundIndex] = {...users[foundIndex], ...req.body };
+        // console.log(users[foundIndex]);
+        // console.log(req.body);
         res.json(users[foundIndex]);
     }
 });
@@ -63,7 +67,7 @@ server.put('/api/user/:id', (req, res) => {
 // 정보 삭제
 server.delete('/api/user/:id', (req, res) => {
     let foundIndex = users.findIndex(u => u.id === req.params.id);
-    if (findIndex === -1) {
+    if (foundIndex === -1) {
         res.status(404).json({ errorMessage: "User was not found" });
     }
     else {
