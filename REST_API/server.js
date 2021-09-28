@@ -50,6 +50,16 @@ server.get('/api/user/:id', (req,res) => {
     console.log(req.params.id);
 });
 
+server.put('/api/user/:id', (req,res) => {
+    let foundIndex = users.findIndex(u => u.id === req.params.id);
+    if(foundIndex === -1){ // user가 발견되지 않을 경우
+        res.status(404).json({ errorMessage: 'User was not found'});
+    }
+    else{
+        users[foundIndex] = {...users[foundIndex], ...req.body};
+        res.json(users[foundIndex]);
+    }
+});
 
 server.listen(port, () => {
     console.log('Server is running');
