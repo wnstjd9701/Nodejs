@@ -1,9 +1,7 @@
 const express = require('express');
 const server = express();
-
-server.use(express.json()); // body-parser 의 역할
-
 const port = 3000;
+server.use(express.json()); // body-parser 의 역할
 
 const users = [
     {
@@ -18,12 +16,12 @@ const users = [
     },
 ]
 
-server.get('/api/user', (req,res) => {
+server.get('/api/user', (req, res) => {
     res.json(users);
 });
 
 // post method
-server.post('/api/user', (req,res) => {
+server.post('/api/user', (req, res) => {
     console.log(req.body);
     users.push(req.body); // users 에 req.body 추가 
     res.json(users);
@@ -36,31 +34,43 @@ server.get('/api/user/:id', (req,res) => {
 });  
 */
 
-server.get('/api/user/:id', (req,res) => {
+server.get('/api/user/:id', (req, res) => {
     const user = users.find((u) => {
         console.log(u.id + "    " + " hi");
         return u.id === req.params.id; // u.id = user1, user2 이 된다. 
     })
-    if(user){   // user가 존재할 경우
+    if (user) {   // user가 존재할 경우
         res.json(user);
     }
-    else{   // user가 존재하지 않을 경우
-        res.status(404).json({errorMessage: "User was not found"});
+    else {   // user가 존재하지 않을 경우
+        res.status(404).json({ errorMessage: "User was not found" });
     }
     console.log(req.params.id);
 });
 
-server.put('/api/user/:id', (req,res) => {
+// 회원정보 수정
+server.put('/api/user/:id', (req, res) => {
     let foundIndex = users.findIndex(u => u.id === req.params.id);
-    if(foundIndex === -1){ // user가 발견되지 않을 경우
-        res.status(404).json({ errorMessage: 'User was not found'});
+    if (foundIndex === -1) { // user가 발견되지 않을 경우
+        res.status(404).json({ errorMessage: 'User was not found' });
     }
-    else{
-        users[foundIndex] = {...users[foundIndex], ...req.body};
+    else {
+        users[foundIndex] = { ...users[foundIndex], ...req.body };
         res.json(users[foundIndex]);
     }
 });
 
+// 정보 삭제
+server.delete('/api/user/:id', (req, res) => {
+    let foundIndex = users.findIndex(u => u.id === req.params.id);
+    if (findIndex === -1) {
+        res.status(404).json({ errorMessage: "User was not found" });
+    }
+    else {
+        let foundUser = users.splice(foundIndex, 1);
+        res.json(foundUser[0]);
+    }
+})
 server.listen(port, () => {
     console.log('Server is running');
 })
