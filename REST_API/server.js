@@ -20,7 +20,7 @@ server.get('/api/user', (req, res) => {
     res.json(users);
 });
 
-// post method
+// post method.
 server.post('/api/user', (req, res) => {
     console.log(req.body);
     users.push(req.body); // users 에 req.body 추가 
