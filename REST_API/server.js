@@ -16,6 +16,22 @@ const users = [
     },
 ]
 
+const products = [
+    {
+        product_id: "1",
+        name: "car",
+        price: "30000"
+    },
+    {
+        product_id: "2",
+        name: "ipad",
+        price: "40000"
+    }
+]
+server.get('/products', (req, res) => {
+    res.json(products);
+});
+
 server.get('/api/user', (req, res) => {
     res.json(users);
 });
