@@ -18,25 +18,63 @@ const users = [
 
 const products = [
     {
-        product_id: "1",
+        productId: "1",
         name: "car",
         price: "30000"
     },
     {
-        product_id: "2",
+        productId: "2",
         name: "ipad",
         price: "40000"
     }
 ]
-server.get('/products', (req, res) => {
+// 상품 조회
+server.get('/api/products', (req, res) => {
     res.json(products);
 });
 
+// 상품 등록
+server.post('/api/products', (req, res) => {
+    products.push(req.body);
+    if(req.body.id){
+        res.json(products);
+    }
+    else{
+        res.status(404).json({ errorMessage: "Something is empty"});
+    }
+})
+
+// 상품 조회 
+server.get('/api/products/:id', (req, res) => {
+    const product = products.find((u) => {
+        return u.productId === req.params.id;
+    })
+    if(product){
+        res.json(product);
+    }
+    else{
+        res.status(404).json({ errorMessage: "Product is not exists"});
+    }
+})
+
+// 상품 정보 수정
+server.put('/api/products/:id', (req,res) => {
+    const foundIndex = products.findIndex((u) => u.productId === req.params.id);
+    if(foundIndex === -1){
+        res.status(404).json({ errorMessage: ""})
+    }
+    else{
+        products[foundIndex] = { ...products[foundIndex], ...req.body};
+        res.json(products[foundIndex]);
+    }
+})
+
+// 사용자 조회
 server.get('/api/user', (req, res) => {
     res.json(users);
 });
 
-// post method.
+// 사용자 등록
 server.post('/api/user', (req, res) => {
     console.log(req.body);
     users.push(req.body); // users 에 req.body 추가 
@@ -50,9 +88,9 @@ server.get('/api/user/:id', (req,res) => {
 });  
 */
 
+// 사용자 조회
 server.get('/api/user/:id', (req, res) => {
     const user = users.find((u) => {
-        console.log(u.id + "    " + " hi");
         return u.id === req.params.id; // u.id = user1, user2 이 된다. 
     })
     if (user) {   // user가 존재할 경우
@@ -61,12 +99,12 @@ server.get('/api/user/:id', (req, res) => {
     else {   // user가 존재하지 않을 경우
         res.status(404).json({ errorMessage: "User was not found" });
     }
-    console.log(req.params.id);
+    // console.log(req.params.id);
 });
 
 // 회원정보 수정
 server.put('/api/user/:id', (req, res) => {
-    let foundIndex = users.findIndex(u => u.id === req.params.id);
+    let foundIndex = users.findIndex(u => u.id === req.params.id); // 틀리면(없을경우) -1
     if (foundIndex === -1) { // user가 발견되지 않을 경우
         res.status(404).json({ errorMessage: 'User was not found' });
     }
