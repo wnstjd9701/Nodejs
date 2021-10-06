@@ -13,6 +13,7 @@ app.get('/:test1/:test2', async (req, res) => {
     // // return res.render();
 });
 
+// frontend id -> backend server req.
 app.get('/topic', (req,res) => {
     var topics = [
         'Javascript is...',
