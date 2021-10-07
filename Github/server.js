@@ -1,9 +1,6 @@
-const express = require('express');
-const githubapi = require('./githubapi');
-const app = express();
+const app = require('./app.js');
+const port = 3000
 
-app.get('/userRepository/:userId', githubapi.getUserRepositoryList);
-
-app.listen(3000, (req,res) => {
-    console.log('Server is running');
+app.listen(port, () => {
+    console.log('Server is running', port);
 })

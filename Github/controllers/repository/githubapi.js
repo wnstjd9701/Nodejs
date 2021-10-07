@@ -5,12 +5,20 @@ var noAuth = new GitHub();
 // 사용자 레포지토리 리스트 조회
 exports.getUserRepositoryList = function(req, res){
     var repositoryList = noAuth.getUser(`${req.params.userId}`);
-
+    var arr = [];
+    var obj = {
+        owner: req.params.userId,
+        arr2: [] 
+    }
     repositoryList.listRepos(function(err,repos){
         repos.forEach((repo) => {
-            console.log(`"${repo.name} " -- "${repo.owner.login}"`)
-            repoInfo.repository.name.push(repo.name);
+            //console.log(`"${repo.name} " -- "${repo.owner.login}"`);
+            //console.log(`"${repo.languages_url}`);
+            arr.push(repo.languages_url);
         })
-        res.json(repos);
+        obj.arr2 = arr;
+        console.log(obj.arr2);
+        res.send(arr);
+
     })
 }
