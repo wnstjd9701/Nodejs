@@ -12,6 +12,8 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
-    "github-api": "^3.4.0"
+    "express-middleware": "^3.4.2",
+    "github-api": "^3.4.0",
+    "morgan": "^1.10.0"
   }
 }
