@@ -11,7 +11,6 @@ exports.getUserRepositoryList = function(req, res){
             console.log(`"${repo.name} " -- "${repo.owner.login}"`)
             repoInfo.repository.name.push(repo.name);
         })
-        // repoInfo.repoOwner.push(repos.owner.login);
         res.json(repos);
     })
 }
