@@ -3,11 +3,11 @@ var GitHub = require('github-api');
 var noAuth = new GitHub();
 
 // 사용자 레포지토리 리스트 조회
-exports.getUserRepositoryList = function(req, res){
+getUserRepositoryList = function(req, res){
     var repositoryList = noAuth.getUser(`${req.params.userId}`);
     var arr = [];
     var obj = {
-        owner: req.params.userId,
+        user: req.params.userId,
         arr2: [] 
     }
     repositoryList.listRepos(function(err,repos){
@@ -18,7 +18,10 @@ exports.getUserRepositoryList = function(req, res){
         })
         obj.arr2 = arr;
         console.log(obj.arr2);
-        res.send(arr);
+        res.json(obj);
 
     })
+}
+module.exports = {
+    getUserRepositoryList
 }
