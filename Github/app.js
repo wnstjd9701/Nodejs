@@ -4,9 +4,11 @@ const adminRouter = require('./routes/admin');
 
 class App {
 
-    constructor () {
+    constructor () {        
+        require('dotenv').config();
+
         this.app = express();
-        
+
         // 미들웨어 셋팅
         this.setMiddleWare();
 
