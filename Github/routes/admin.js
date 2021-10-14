@@ -13,7 +13,7 @@ function testMiddleWare2(req, res, next) {
 }
 
 router.get('/', testMiddleWare, testMiddleWare2, (req, res) => {
-  res.send('admin 이후 url');
+  res.send('error 이후 url');
 });
 router.get('/error', (req, res) => {
   res.send(baseResponse.SUCCESS);
