@@ -1,7 +1,24 @@
-const test1 = { id: "a", name: "LEE", email: "LEE@naver.com", test1: "test1"};
-const test2 = { id: "b", name: "Yun", email: "Yun@naver.com", test2: "test2"};
+const express = require('express');
+const app = express();
+const port = 3000;
 
-// copy
-const merge = {...test1, ...test2};
-console.log(merge);
+const { default: axios } = require('axios');
+const { appendFile } = require('fs');
+const GitHub = require('github-api'); // npm install github-api
+const noAuth = new GitHub(); // noAuth 방식 -> token, noAuth,
 
+const api = axios.create({
+  baseURL: 'https://api.github.com',
+});
+
+app.get('/githubAPI/:userId', (req, res) => {
+  var repository = noAuth.getUser(`${req.params.userId}`);
+});
+
+app.get('/', (req, res) => {
+  res.send(axios.get('https://api.github.com/users/wnstjd9701/followers'));
+});
+
+app.listen(port, () => {
+  console.log('Server is running');
+});
