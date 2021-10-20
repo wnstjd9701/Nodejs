@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const baseResponse = require('../config/baseResponseStatus');
-
+// MiddleWare
 function testMiddleWare(req, res, next) {
   console.log('첫번째 미들웨어');
   next();
