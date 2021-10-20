@@ -6,4 +6,5 @@ router.use('/', require('./MyPage'));
 router.use('/test', () => {
   res.json({ message: 'test' });
 });
+router.use('/user', require('./User'));
 module.exports = router;
