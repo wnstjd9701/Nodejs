@@ -8,3 +8,4 @@ router.use('/test', () => {
 });
 router.use('/user', require('./User'));
 module.exports = router;
+// exports
