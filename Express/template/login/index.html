@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sea-Cance</title>
+	<link rel="stylesheet" href="style.css">
+	<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+</head>
+<body>
+	<section class="Login-form">
+		<h1>Sea-Cance</h1>
+		<form action="POST">
+			<div class="int-area">
+				<input type="text" name="id" id="id" autocomplete="off" required>
+				<label for="id">USER NAME</label>
+			</div>
+			<div class="int-area">
+				<input type="password" name="pw" id="pw" autocomplete="off" required>
+				<label for="pw">USER PASSWORD</label>
+				</input>
+			</div>
+			<div class="btn-area">
+				<button id="btn" type="submit">LOGIN</button>
+			</div>
+		</form>
+		<div class="caption">
+			<a href="./forgot.html">Forgot password?</a>
+		</div>	
+	</section>
+
+	<script>
+		let id = $('#id');
+		let pw = $('#pw');
+		let btn = $('#btn');
+		
+		$(btn).on('click', function () {
+				if($(id).val() == ""){
+					$(id).next('label').addClass('warning');
+					setTimeout(function() {
+						$('label').removeClass('warning');
+					}, 1500)
+				}
+				else if($(pw).val() == ""){
+					$(pw).next('label').addClass('warning');
+				}
+					$(pw).next('label').addClass('warning');
+					setTimeout(function() {
+						$('label').removeClass('warning');
+					}, 1500)
+		});
+	</script>
+</body>
+</html>
