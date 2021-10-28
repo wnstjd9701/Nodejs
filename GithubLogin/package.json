@@ -11,6 +11,8 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.24.0",
+    "express-session": "^1.17.2",
+    "nunjucks": "^3.2.3",
     "qs": "^6.10.1",
     "session": "^0.1.0"
   }

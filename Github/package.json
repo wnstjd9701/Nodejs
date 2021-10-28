@@ -1,7 +1,6 @@
 {
   "name": "Github",
   "version": "1.0.0",
-  "description": "",
   "main": "githubapi.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -17,6 +16,11 @@
     "express-middleware": "^3.4.2",
     "github-api": "^3.4.0",
     "morgan": "^1.10.0",
-    "mysql2": "^2.3.0"
-  }
+    "mysql2": "^2.3.0",
+    "nunjucks": "^3.2.3",
+    "qs": "^6.10.1",
+    "session": "^0.1.0"
+  },
+  "devDependencies": {},
+  "description": ""
 }

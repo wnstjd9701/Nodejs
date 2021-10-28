@@ -24,70 +24,27 @@ const github = {
   clientSecret: process.env.clientSecret,
   redirectUri: 'http://localhost:3000/login',
 };
-//profile account_email
-app.get('/auth/github', (req, res) => {
-  const kakaoAuthURL = `https://github.com/login/oauth/authorize?client_id==${github.clientId}&redirect_uri=${github.redirectUri}&response_type=code&scope=profile,account_email`;
-  res.redirect(kakaoAuthURL);
-});
-
-app.get('/auth/github/callback', async (req, res) => {
-  //axios>>promise object
+app.get('/', async (req, res) => {
+  const url = `https://github.com/login/oauth/access_token?client_id=${github.clientId}&client_secret=${github.clientSecret}`;
   try {
-    //access토큰을 받기 위한 코드
-    token = await axios({
-      //token
+    const access_token = await axios({
       method: 'POST',
-      url: 'https://api.github.com/oauth/token',
-      headers: {
-        'content-type': 'application/x-www-form-urlencoded',
+      url: url,
+      HEADERS: {
+        'contenct-type': 'application/json',
       },
-      data: qs.stringify({
-        grant_type: 'authorization_code', //특정 스트링
-        client_id: github.clientId,
-        client_secret: github.clientSecret,
-        redirectUri: github.redirectUri,
-        code: req.query.code, //결과값을 반환했다. 안됐다.
-      }), //객체를 string 으로 변환
     });
-  } catch (err) {
-    res.json(err.data);
+  } finally {
+    console.log('SUCCESS');
   }
-  //access토큰을 받아서 사용자 정보를 알기 위해 쓰는 코드
-  let user;
-  try {
-    console.log(token); //access정보를 가지고 또 요청해야 정보를 가져올 수 있음.
-    user = await axios({
-      method: 'get',
-      url: 'https://api.github.com/user',
-      headers: {
-        Authorization: `Bearer ${token.data.access_token}`,
-      }, //헤더에 내용을 보고 보내주겠다.
-    });
-  } catch (e) {
-    res.json(e.data);
-  }
-  console.log(user);
 
-  req.session.github = user.data;
-  //req.session = {['github'] : user.data};
-
-  res.send('success');
+  res.send('SUCCESS LOGIN');
 });
 
-app.get('/auth/info', (req, res) => {
-  let { nickname, profile_image } = req.session.github.properties;
-  res.render('info', {
-    nickname,
-    profile_image,
-  });
+app.get('/login', async (req, res) => {
+  console.log('SUCCESS');
+  res.send('SUCCESS');
 });
-
-app.get('/', (req, res) => {
-  res.render('index');
-});
-
-app.get(github.redirectUri);
-
 app.listen(3000, () => {
   console.log(`server start 3000`);
 });

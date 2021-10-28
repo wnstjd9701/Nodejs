@@ -13,6 +13,7 @@ const api = axios.create({
 
 app.get('/githubAPI/:userId', (req, res) => {
   var repository = noAuth.getUser(`${req.params.userId}`);
+  res.json(repository.__user);
 });
 
 app.get('/', (req, res) => {
