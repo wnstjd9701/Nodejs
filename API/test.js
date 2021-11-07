@@ -11,11 +11,12 @@ app.get('/:test1/:test2', async (req, res) => {
 });
 
 // frontend id -> backend server req.
-app.get('/topic', (req, res) => {
-  const obj = {
-    advancedTeckStack: ['c++', 'c', 'java', 'javascript'],
-  };
-  console.log(obj.advancedTeckStack[0]);
+app.post('/topic', (req, res) => {
+  // const techStack = {
+  //   advancedTechStack: ['c++', 'c', 'java', 'javascript'],
+  //   experiencedTechStack: ['python'],
+  // };
+  console.log(req.body);
 });
 
 app.listen(3000, () => {
