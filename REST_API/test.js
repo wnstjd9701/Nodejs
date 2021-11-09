@@ -11,13 +11,21 @@ const api = axios.create({
   baseURL: 'https://api.github.com',
 });
 
-app.get('/githubAPI/:userId', (req, res) => {
-  var repository = noAuth.getUser(`${req.params.userId}`);
-  res.json(repository.__user);
+app.get('/test', (req, res) => {
+  const test = {
+    id: 1,
+    tc_id: 2,
+    tc_name: 'test',
+  };
+  console.log(test.id);
+  return res.json(test);
 });
 
-app.get('/', (req, res) => {
-  res.send(axios.get('https://api.github.com/users/wnstjd9701/followers'));
+app.get('/', async (req, res) => {
+  const { data } = await axios.get('http://localhost:3000/test');
+  console.log(data);
+  res.json({ success: 'success' });
+  // res.send(axios.get('https://api.github.com/users/wnstjd9701/followers'));
 });
 
 app.listen(port, () => {
