@@ -12,7 +12,7 @@ app.get('/:test1/:test2', async (req, res) => {
   // // return res.render();
 });
 
-// frontend id -> backend server req.
+// frontend id -> backend server req.  test
 app.post('/topic/:userId', (req, res) => {
   // const techStack = {
   //   advancedTechStack: ['c++', 'c', 'java', 'javascript'],
