@@ -3,9 +3,8 @@ const dns = require('dns');
 // let global : 전역 변수
 // var global : 전역 변수
 
-var global // file 전체에서 작동
-
-if(true){
-    let global // scope 범위 내에서 작동
+var global; // file 전체에서 작동
+// global
+if (true) {
+  let global; // scope 범위 내에서 작동
 }
-
