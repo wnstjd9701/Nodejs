@@ -28,6 +28,20 @@ app.get('/', async (req, res) => {
   // res.send(axios.get('https://api.github.com/users/wnstjd9701/followers'));
 });
 
+app.get('/test2', (req, res) => {
+  const test = [
+    {
+      name: 'Jun',
+      name2: 'Yun',
+    },
+    {
+      id: '1',
+      id2: '2',
+    },
+  ];
+  console.log(test[0].name);
+  res.send(test);
+});
 app.listen(port, () => {
   console.log('Server is running');
 });
