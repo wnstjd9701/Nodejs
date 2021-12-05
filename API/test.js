@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-// exoress
+// exoress framework
 app.get('/:test1/:test2', async (req, res) => {
   let { test1, test2 } = req.params;
   console.log(test1);
