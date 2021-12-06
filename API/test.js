@@ -41,6 +41,7 @@ app.post('/topic/:userId', (req, res) => {
   res.json({ ErrorMessage: 'error' });
 });
 
+// listen on 3000 port
 app.listen(3000, () => {
   console.log('status ok');
 });
