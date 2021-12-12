@@ -22,7 +22,7 @@ app.get('/api/users/:apikey/:type', async (req, res) => {
     res.send('apikey is not valid');
   } else {
     // apikey가 맞을경우
-
+    // ..
     if (type == 'seoul') {
       let data = [
         { name: '박지성', city: 'seoul' },
