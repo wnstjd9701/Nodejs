@@ -4,3 +4,4 @@ module.exports = {
   FAILURE: { isSuccess: false, code: 1001, message: '실패' },
 };
 //baseResponseStatus
+// response
