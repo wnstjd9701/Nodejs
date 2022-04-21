@@ -1,26 +1,32 @@
-const net = require('net');
+const app = require('express')();
+const http = require('http').createServer(app);
+const io = require('socket.io')(http);
 
-const server = net.createServer(function (socket) {
-  console.log(socket.address().address + ' connected.');
+const port = 3000;
 
-  // client 로 부터 오는 data를 화면에 출력
-  socket.on('data', (data) => {
-    console.log('recieve: ' + data);
-  });
-  // client와 접속이 끊기는 메시지 출력
-  socket.on('close', () => {
-    console.log('client disconnected. ');
-  });
-  // client가 접속하면 화면에 출력해주는 메시지
-  socket.write('welcome to server');
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/client.html');
 });
 
-// Error
-server.on('error', (err) => {
-  console.log('err: ' + err);
+http.listen(port, () => {
+  console.log(`Listening on ${port}`);
 });
 
-// Port 5000
-server.listen(5000, () => {
-  console.log('Listening on 5000 Port');
+io.on('connection', (socket) => {
+  console.log(socket.id, 'Connected');
+
+  socket.emit('msg', `${socket.id}가 연결 되었습니다. `);
+
+  socket.on('msg', (data) => {
+    console.log(socket.id, data);
+    var result = '';
+    for (let i = 0; i < data.length; i++) {
+      if (data[i] === data[i].toUpperCase()) {
+        result += data[i].toLowerCase();
+      } else {
+        result += data[i].toUpperCase();
+      }
+    }
+    socket.emit('msg', `Server: ${result}를 받았습니다. `);
+  });
 });
