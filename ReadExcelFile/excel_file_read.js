@@ -18,5 +18,5 @@ for (var i = 0; i < jsonData.length; i++) {
   const laptopId = jsonData[i].노트북번호;
   const isReturn = jsonData[i].반납여부;
 
-  // DB 저장 로직 (Update, Insert)
+  // DB 저장 로직 (Update, Insert)..
 }
