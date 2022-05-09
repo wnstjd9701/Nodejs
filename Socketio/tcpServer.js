@@ -6,8 +6,6 @@ const io = require('socket.io')(http);
 
 const port = 3000;
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
 const user = {
   id: 'test',
   password: '1234',
